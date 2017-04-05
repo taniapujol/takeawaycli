@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+.titulo{
+    font-family: 'Lobster', cursive;
+   
+}
+.social-nav{
+    display: inline-block;
+}
+.social-nav a {
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.social-nav a i {
+    color: white;
+    font-size: 2.05em;
+}
+.web-map{
+    margin-left: 20px;
+}
+.web-map a{
+    text-decoration: none;
+    color: white;
+}

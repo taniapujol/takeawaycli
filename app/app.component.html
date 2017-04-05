@@ -1,0 +1,54 @@
+<nav>
+  <div class="nav-wrapper red">
+    <a href="#!" class="brand-logo titulo"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>TakeAway</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a [routerLink]="[ '/inicio']">Inicio</a></li>
+      <li><a [routerLink]="[ '/info']">Info</a></li>
+      <li><a [routerLink]="[ '/contacto']">Contacto</a></li>
+      <li><a title="Sing In"><i class="large material-icons">face</i></a></li>
+      <li><a><i class="large material-icons">shopping_cart</i></a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a [routerLink]="[ '/inicio']"><i class="material-icons">store</i></a></li>
+      <li><a [routerLink]="[ '/info']"><i class="material-icons">info</i></a></li>
+      <li><a [routerLink]="[ '/contacto']"><i class="material-icons">contact_mail</i></a></li>
+      <li><a><i class="material-icons">perm_identity</i></a></li>
+      <li><a><i class="material-icons">shopping_cart</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+  <router-outlet>  </router-outlet>
+
+<footer class="page-footer red">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Visita nuestra tienda</h5>
+        <p class="grey-text text-lighten-4">C/Lleida, 31</p>
+        <img class="responsive-img" src="../assets/img/tenda.png" width="50%">
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Web Map</h5>
+        <ul class="web-map">
+          <li><a [routerLink]="[ '/inicio']">Inicio</a></li>
+          <li><a [routerLink]="[ '/info']">Info</a></li>
+          <li><a [routerLink]="[ '/contacto']">Contacto</a></li>
+        </ul>
+        <h5 class="white-text">Follow us</h5>
+        <ul class="social-nav">
+          <a><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+          <a><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+          <a><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container center">
+    © 2014 TakeAway.cat by Tania Pujol
+    </div>
+  </div>
+</footer>
+
