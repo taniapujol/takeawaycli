@@ -9,15 +9,15 @@ export class TakeAwayService {
   constructor(private _http: Http) { }
 
 getPlatos(){
-	return this._http.get("http://localhost/tania/bdApi/api.php/getPlatos")
+	return this._http.get("http://localhost/tania/basedatosApi/api.php/getPlatos")
 			.map(res=>res.json());
 }
 getCategoria(){
-	return this._http.get("http://localhost/tania/bdApi/api.php/getCategoria")
+	return this._http.get("http://localhost/tania/basedatosApi/api.php/getCategoria")
 			.map(res=>res.json());
 }
 getUser(){
-	return this._http.get("http://localhost/tania/bdApi/api.php/getUser")
+	return this._http.get("http://localhost/tania/basedatosApi/api.php/getUser")
 			.map(res=>res.json());
 }
 }
