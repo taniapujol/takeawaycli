@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Card } from '../model/card';
-import { FiltroPipe } from '../pipe/filtro.pipe';
-import { TakeAwayService } from '../service/takeaway.service';
+import { Card } from '../_model/card';
+import { FiltroPipe } from '../_pipe/filtro.pipe';
+import { TakeAwayService } from '../_service/takeaway.service';
 
 @Component({
   selector: 'app-inicio',
@@ -13,6 +13,8 @@ import { TakeAwayService } from '../service/takeaway.service';
 export class InicioComponent implements OnInit {
   public platos;
   public categorias;
+  public numPlatos;
+  public numCat;
   constructor ( private _service: TakeAwayService ) {  } 
 
   ngOnInit() {
@@ -24,7 +26,9 @@ getCategorias (){
     .subscribe(
       result => {
         this.categorias = result.data;
+        this.numCat = result.cont;
         console.log("categorias: "+this.categorias);
+        console.log(" cont categorias: "+this.numCat);
       });
 }
 getPlatos(){
@@ -32,7 +36,9 @@ getPlatos(){
     .subscribe(
       result => {
         this.platos = result.data;
+        this.numPlatos = result.cont;
         console.log("platos: "+this.platos);
+        console.log("cont platos: "+this.numPlatos);
       });
 }
 } // final del archivo

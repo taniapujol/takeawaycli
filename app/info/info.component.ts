@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $:any;
+
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -11,5 +13,5 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
   }
-
-}
+}// fin del archivo
+   

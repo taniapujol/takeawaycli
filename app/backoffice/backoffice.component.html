@@ -1,0 +1,82 @@
+<div class="container">
+  <ul class="collapsible" data-collapsible="accordion">
+    <!--Seccion de categorias-->
+    <li>
+      <div class="collapsible-header"><span class="badge red white-text">{{numCat}}</span>Categorias</div>
+      <div class="collapsible-body">
+        <table class="responsive-table highlight centered">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Decripcion</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of categorias">
+              <td>{{cat.nombre}}</td>
+              <td>{{cat.descripcion}}</td>
+              <td><a [routerLink]="[ '/categoria-detalle', cat.id ]"><i class="material-icons">settings</i></a></td>
+              <td><i class="material-icons">delete</i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+    <!--Seccion de productos-->
+    <li>
+      <div class="collapsible-header"><span class="badge red white-text">{{numPlatos}}</span>Platos</div>
+      <div class="collapsible-body">
+        <table class="responsive-table highlight centered">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Decripcion</th>
+              <th>Activado</th>
+              <th>Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let plat of platos">
+              <td><img class="responsive-img" src="../../assets/img/{{plat.foto}}"></td>
+              <td>{{plat.nombre}}</td>
+              <td>{{plat.precio}}</td>
+              <td>{{plat.descripcion}}</td>
+              <td>{{plat.activado}}</td>
+              <td></td>
+              <td *ngFor="let cat of categorias"><span *ngIf="(plat.id_categoria == cat.id )">{{cat.nombre}}</span></td>
+              <td><a [routerLink]="[ '/plato-detalle', plat.id ]"><i class="material-icons">settings</i></a></td>
+              <td><i (click)="onModal(plat.nombre, plat.precio, plat.descripcion,plat.foto)" style="cursor:pointer;" class="material-icons">pageview</i></td>
+              <td><i class="material-icons">delete</i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <div class="container">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="../assets/img/{{imagen}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{titulo}}<i class="material-icons right">more_vert</i></span>
+          <p>{{precio}}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{titulo}}<i class="material-icons right">close</i></span>
+          <p>{{descripcion}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a [routerLink]="[ 'backoffice']" class="modal-action modal-close waves-effect red btn-large"><i class="material-icons">check_circle</i></a>
+  </div>
+</div>

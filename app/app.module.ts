@@ -8,7 +8,13 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from './info/info.component';
 import { ContactoComponent } from './contacto/contacto.component';
-import { FiltroPipe } from './pipe/filtro.pipe';
+import { FiltroPipe } from './_pipe/filtro.pipe';
+import { BackofficeComponent } from './backoffice/backoffice.component';
+import { PlatoDetalleComponent } from './backoffice/plato-detalle/plato-detalle.component';
+import { CategoriaDetalleComponent } from './backoffice/categoria-detalle/categoria-detalle.component';
+import { LoginComponent } from './backoffice/login/login.component';
+import { RegisterComponent } from './backoffice/register/register.component';
+import { HomeComponent } from './backoffice/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { FiltroPipe } from './pipe/filtro.pipe';
     InicioComponent,
     InfoComponent,
     ContactoComponent,
-    FiltroPipe
+    FiltroPipe,
+    BackofficeComponent,
+    PlatoDetalleComponent,
+    CategoriaDetalleComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
