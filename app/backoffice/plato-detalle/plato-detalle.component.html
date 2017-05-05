@@ -1,3 +1,63 @@
-<p>
-  plato-detalle works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col s6">
+      <h2 class="flow-text">Editando {{plato.nombre}}</h2>
+    </div>
+    <div class="col s3 offset s3">
+      <img class="reponsive-img" src="../../assets/img/{{plato.foto}}">
+    </div>
+  </div>
+  <form #formPlato="ngForm" (ngSubmit)="onSubmit()" id="FormPlato">
+    <!--creamos el campo nombre del plato-->
+    <div class="row">
+      <div class="input-field col l12 m12 s12">
+        <input [(ngModel)]="plato.nombre" id="nombre" type="text" name="nombre" ngModel>
+        <label [class.active]="plato.nombre" for="nombre">Plato</label>
+      </div>
+    </div>
+    <!--creamos el campo de descripcion del producto-->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea [(ngModel)]="plato.descripcion" id="textarea" class="materialize-textarea" name="descripcion" ngModel></textarea>
+        <label [class.active]="plato.descripcion" for="textarea">Decripcion de la categoria</label>
+      </div>
+    </div>
+    <!-- creamos el campo subida de imagen -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">wallpaper</i>
+        <input id="foto" [(ngModel)]="plato.foto" name="foto" type="text" class="validate">
+        <label [class.active]="plato.foto" for="foto">Foto</label>
+      </div>
+    </div>
+    <!-- creamos el campo activar producto -->
+    <div class="row">
+      <div class="switch col l4 m4 s12">
+        <label [class.active]="plato.activado">
+                  Off
+                  <input [(ngModel)]="plato.activado" type="checkbox" name="activado" ngModel>
+                  <span class="lever"></span>
+                  On
+                </label>
+      </div>
+      <!--creamos el campo precio-->
+      <div class="input-field col l4 m4 s12">
+        <input [(ngModel)]="plato.precio" id="precio" type="number" step="any" name="precioRacion" required="" ngModel>
+        <label [class.active]="plato.precio" for="precio">Precio</label>
+      </div>
+      <div class="input-field col l4 m4 s12 lista">
+        <select [(ngModel)]="plato.categoria" class="browser-default" id="listado" name="categoria" ngModel>
+                  <option value="" disabled selected>Elige una opcion</option>
+                  <option *ngFor="let cat of categorias" [value]="cat.nombre"> {{cat.nombre}} </option>
+                </select>
+        <label [class.active]="plato.categoria">Selecciona una Categoria</label>
+      </div>
+    </div>
+    <button style="margin-bottom: 20px" class="btn waves-effect waves-light red" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
+    </button>
+     <button style="margin-bottom: 20px" class="btn waves-effect waves-light red right"> <a class="white-text" [routerLink]="[ '/backoffice']">Editar otro plato</a>        
+    </button>
+  </form>
+</div>

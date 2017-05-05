@@ -1,3 +1,31 @@
-<p>
-  categoria-detalle works!
-</p>
+<div id="container">
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <h2 class="center">Editando categoria {{categoria.nombre}}</h2>
+    </div>
+  </div>
+  <form #formCat="ngForm" (ngSubmit)="onSubmit()" id="formCat">
+    <div class="container" style="margin:50px auto;">
+      <div class="row">
+        <!--creamos la entrada de datos del nombre de la categoria-->
+        <div class="input-field col l11 m11 s12">
+          <input [(ngModel)]="categoria.nombre" id="nombre" type="text" name="nombre" required="" ngModel>
+          <label  [class.active]="categoria.nombre" for="nombre">Nombre Categoria</label>
+        </div>
+      </div>
+      <!--creamos la entrada de datos de la descripcion de la categoria-->
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea [(ngModel)]="categoria.descripcion" id="textarea" class="materialize-textarea" name="descripcion"></textarea>
+          <label [class.active]="categoria.descripcion" for="textarea">Decripcion de la categoria</label>
+        </div>
+      </div>
+      <button id="categoria" class="btn waves-effect waves-light red" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
+      </button>
+       <button style="margin-bottom: 20px" class="btn waves-effect waves-light red right"> <a class="white-text" [routerLink]="[ '/backoffice']">Editar otra Categoria</a>        
+    </button>
+    </div>
+  </form>
+</div>

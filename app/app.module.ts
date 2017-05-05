@@ -14,7 +14,9 @@ import { PlatoDetalleComponent } from './backoffice/plato-detalle/plato-detalle.
 import { CategoriaDetalleComponent } from './backoffice/categoria-detalle/categoria-detalle.component';
 import { LoginComponent } from './backoffice/login/login.component';
 import { RegisterComponent } from './backoffice/register/register.component';
-import { HomeComponent } from './backoffice/home/home.component';
+import { BorrarProductoComponent } from './backoffice/borrar-producto/borrar-producto.component';
+import { NewProductoComponent } from './backoffice/new-producto/new-producto.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HomeComponent } from './backoffice/home/home.component';
     CategoriaDetalleComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    BorrarProductoComponent,
+    NewProductoComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

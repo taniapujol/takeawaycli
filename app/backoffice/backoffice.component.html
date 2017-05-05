@@ -4,6 +4,9 @@
     <li>
       <div class="collapsible-header"><span class="badge red white-text">{{numCat}}</span>Categorias</div>
       <div class="collapsible-body">
+        <a [routerLink]="[ '/new-producto', 'cat' ]" class="waves-effect waves-teal btn-flat red  white-text right">
+           <i class="material-icons Medium">fiber_new</i>
+        </a>
         <table class="responsive-table highlight centered">
           <thead>
             <tr>
@@ -17,16 +20,27 @@
               <td>{{cat.nombre}}</td>
               <td>{{cat.descripcion}}</td>
               <td><a [routerLink]="[ '/categoria-detalle', cat.id ]"><i class="material-icons">settings</i></a></td>
-              <td><i class="material-icons">delete</i></td>
+              <td><a [routerLink]="[ '/borrar-producto', cat.id, 'cat' ]"><i class="material-icons">delete</i></a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </li>
-    <!--Seccion de productos-->
+    <!--Seccion de platos-->
     <li>
-      <div class="collapsible-header"><span class="badge red white-text">{{numPlatos}}</span>Platos</div>
+      <div class="collapsible-header">
+        <span class="badge red white-text">{{numPlatos}}</span>
+        <span class="badge red white-text"  data-badge-caption="no activados">
+          {{numActivos}}
+        </span>
+        Platos
+      </div>
       <div class="collapsible-body">
+        
+        <a [routerLink]="[ '/new-producto', 'plat' ]" class="waves-effect waves-teal btn-flat red  white-text right">
+           <i class="material-icons Medium">fiber_new</i>
+        </a>
+        
         <table class="responsive-table highlight centered">
           <thead>
             <tr>
@@ -44,12 +58,17 @@
               <td>{{plat.nombre}}</td>
               <td>{{plat.precio}}</td>
               <td>{{plat.descripcion}}</td>
-              <td>{{plat.activado}}</td>
-              <td></td>
-              <td *ngFor="let cat of categorias"><span *ngIf="(plat.id_categoria == cat.id )">{{cat.nombre}}</span></td>
-              <td><a [routerLink]="[ '/plato-detalle', plat.id ]"><i class="material-icons">settings</i></a></td>
-              <td><i (click)="onModal(plat.nombre, plat.precio, plat.descripcion,plat.foto)" style="cursor:pointer;" class="material-icons">pageview</i></td>
-              <td><i class="material-icons">delete</i></td>
+              <td>
+                <div *ngIf="plat.activado == 1; else elseTemplate">
+                  <i class="material-icons small green-text">lens</i></div>
+                <ng-template #elseTemplate>
+                  <i class="material-icons small red-text">lens</i>
+                </ng-template>
+              </td>
+              <td>{{plat.categoria}}</td>
+              <td><a [routerLink]="[ '/plato-detalle', plat.id ]"><i class="material-icons">mode_edit</i></a></td>
+              <td><i (click)="onModal(plat.nombre, plat.precio, plat.descripcion,plat.foto)" style="cursor:pointer;" class="material-icons">search</i></td>
+              <td><a [routerLink]="[ '/borrar-producto', plat.id, 'plat' ]"><i class="material-icons">delete</i></a></td>
             </tr>
           </tbody>
         </table>

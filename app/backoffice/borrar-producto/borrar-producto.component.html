@@ -1,0 +1,47 @@
+<div class="container z-depth-5" *ngIf="tipo === 'cat'" style="height:500px; margin:20px auto;">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h3 class="center-align"> La categoria <span class="red-text">{{categoria.nombre}}</span> sera <span class="red-text">eliminada definitivamente.</span></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <h3>Esta seguro !!!</h3>
+      </div>
+      <div class="col s6 valign-wrapper">
+        <button (click)='borrar_Categoria()' class="btn-floating btn-large waves-effect waves-light red white-text" style="margin-right:10px;">SI</button>
+        <button [routerLink]="[ '/backoffice']" class="btn-floating btn-large waves-effect waves-light blue white-text">NO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container z-depth-5" *ngIf="tipo === 'plat'" style="height:500px; margin:20px auto;">
+  <div class="row">
+    <div class="col s12">
+      <h3 class="center-align"> El plato <span class="red-text">{{plato.nombre}}</span> sera <span class="red-text">eliminado definitivamente</span></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <h3 class="center">Esta seguro !!!</h3>
+    </div>
+    <div class="col s6">
+      <button (click)='borrar_Plato()' class="btn-floating btn-large waves-effect waves-light red white-text" style="margin-right:10px;">SI</button>
+      <button [routerLink]="[ '/backoffice']" class="btn-floating btn-large waves-effect waves-light blue white-text">NO</button>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="borrar">
+  <div class="row">
+    <div class="col s3">
+       <i class="material-icons large">check_circle</i>
+    </div>
+    <div class="col s9">
+      <h3>DATO BORRADO</h3>
+      <button  class="waves-effect waves-teal btn-flat red"><a [routerLink]="[ '/backoffice']">Volver </a></button>
+    </div>
+  </div>
+</div>
+

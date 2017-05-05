@@ -1,49 +1,58 @@
-  <div class="row valign-wrapper">
-        <div class="col s12 m6 l6">
-            <div class="col s12">
-                <h2>Info</h2>
-                <p>Horario: Lun-Vie de 9 a 15 y 17 a 22h </p>
-                <p>Sábado y Domingo de 10 a 16h </p>
-                <p>Telf 98 258 414 741</p>
-                <p>E-mail: TakeAway@gmail.com</p>
-            </div>
-            <div class="col s12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.774366344367!2d1.724578315128121!3d41.226687279279126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a386e28c8747cd%3A0x7d7d428d6a395612!2sCarrer+de+la+Peixateria%2C+08800+Vilanova+i+la+Geltr%C3%BA%2C+Barcelona!5e0!3m2!1sca!2ses!4v1490293055193" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-        </div>
-        <!--Empezamos el formulario  -->
-        <div class="col s12 m6 l6">            
-            <form id="contactForm" method="post">
-                <div class="row">
-                    <!--creamos la entrada de datos del nombre del usuario-->
-                    <div class="input-field col l6 m6 s12">
-                        <i class="material-icons prefix">person_pin</i>
-                        <!--en la etiqueta imput, que es donde el encontramos los atributos:
-                            placeholder (ayuda) type( tipo de entrada) name (recoge el valor del escrito) -->
-                        <input id="nombreApellido" type="text" name="nombre" required="">
-                        <label for="nombreApellido">Nombre y Apellidos</label>
-                    </div>
-                    <!--creamos la entrada de datos del e-mail del usuario-->
-                    <div class="input-field col s12 m6 l6">
-                        <i class="material-icons prefix">email</i>
-                        <input id="email" type="email" name="email" required="">
-                        <label for="email" data-error="Esta mal escrito">Email</label>
-                    </div>
-                </div>
-                <!--creamos la seccion text-area de escriptura de un mensaje-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="textarea" class="materialize-textarea" name="mensaje"></textarea>
-                        <label for="textarea">Escribe tu mensaje</label>
-                    </div>
-                </div>
-                <button class="btn waves-effect waves-light purple lighten-3" type="submit" name="action">Enviar
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
-        </div>
-        <div id="gracias" class="col s12">
-            <h3>Gracias !!! <i class="center large material-icons green-text">thumb_up</i></h3>
-            <p>por contactar con nosotros en breve nos pondremos en contacto contigo</p>
-        </div>
+<div class="row valign-wrapper">
+  <div class="col s12 m6 l6">
+    <div class="col s12">
+      <h2 class="red white-text">Info</h2>
+      <p>Horario: Lun-Vie de 9 a 15 y 17 a 22h </p>
+      <p>Sábado y Domingo de 10 a 16h </p>
+      <p>Telf 98 258 414 741</p>
+      <p>E-mail: TakeAway@gmail.com</p>
     </div>
+    <div class="col s12">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.774366344367!2d1.724578315128121!3d41.226687279279126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a386e28c8747cd%3A0x7d7d428d6a395612!2sCarrer+de+la+Peixateria%2C+08800+Vilanova+i+la+Geltr%C3%BA%2C+Barcelona!5e0!3m2!1sca!2ses!4v1490293055193"
+        width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <!--Empezamos el formulario  -->
+  <div class="col s12 m6 l6" id="form">
+    <section *ngIf="!form_enviado">
+      <form #formContact="ngForm" (ngSubmit)="onSubmit(formContact.value)">
+        <!--creamos la entrada de datos del nombre del usuario-->
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person_pin</i>
+            <!--en la etiqueta imput, que es donde el encontramos los atributos:
+                            placeholder (ayuda) type( tipo de entrada) name (recoge el valor del escrito) -->
+            <input ngModel id="nombreApellido" type="text" name="nombre" required="">
+            <label for="nombreApellido">Nombre y Apellidos</label>
+          </div>
+        </div>
+        <!--creamos la entrada de datos del e-mail del usuario-->
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input ngModel id="email" type="email" name="email" required="">
+            <label for="email" data-error="Esta mal escrito">Email</label>
+          </div>
+        </div>
+        <!--creamos la seccion text-area de escriptura de un mensaje-->
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea ngModel id="textarea" class="materialize-textarea" name="mensaje"></textarea>
+            <label for="textarea">Escribe tu mensaje</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light red" type="submit" name="action">
+            Enviar <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </section>
+    <section *ngIf="form_enviado">
+        <div id="gracias" class="col s12 m6 l6" >
+            <div class="container center">
+                <h3>Gracias !!! <i class="center large material-icons red-text">thumb_up</i></h3>
+                <p>por contactar con nosotros en breve nos pondremos en contacto contigo</p>
+            </div>
+        </div>
+    </section>
+</div>
+  

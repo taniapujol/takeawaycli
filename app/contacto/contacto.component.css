@@ -1,0 +1,38 @@
+#form{
+    border-left: 4px solid red;
+    margin-left: 20px;
+}
+input[type=text], input[type=email]{
+    width: 75%;
+}
+textarea{ width: 80%}
+/*cambio de color para input text*/
+input[type=text]:focus:not([readonly]){
+    border-bottom: 1px solid black;
+}
+input[type=text]:focus:not([readonly])+label{
+    color: black;
+}
+.input-field .prefix.active{
+    color: black;
+}
+/*cambio de color para input email*/
+input[type=email]:focus:not([readonly]){
+    border-bottom: 1px solid black;
+}
+input[type=email]:focus:not([readonly])+label{
+    color: black;
+}
+.input-field .prefix.active{
+    color: black;
+}
+/*cambio de color para input textarea*/
+textarea:focus:not([readonly]){
+    border-bottom: 1px solid black;
+}
+textarea:focus:not([readonly])+label{
+    color: black;
+}
+.input-field .prefix.active{
+    color: black;
+}
