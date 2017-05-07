@@ -83,8 +83,7 @@ export class TakeAwayService {
                 .map(res => res.json());
     }
     getCliente(cliente: string) {
-        const nombre = cliente;
-        return this._http.get('http://localhost/Tania/basedatosApi/api.php/getCliente/' + nombre)
+        return this._http.get('http://localhost/Tania/basedatosApi/api.php/getCliente/' + cliente)
                 .map(res => res.json());
     }
     postUser(form: any) {
@@ -93,7 +92,7 @@ export class TakeAwayService {
         console.log(params);
         let headers = new Headers({'Content-Type' : 'application/x-ww-form-urlendoded'});
         console.log(headers);
-        return this._http.post('http://localhost/tania/basedatosApi/api.php/registro',
+        return this._http.post('http://localhost/Tania/basedatosApi/api.php/registro',
             params, {headers: headers}).map(res=>res.json());
     }
 // fin de service

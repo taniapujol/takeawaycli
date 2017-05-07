@@ -17,15 +17,17 @@ export class LoginComponent implements OnInit {
   public users: Login;
   public usuario: boolean;
   public nameUsuario: string;
-  // LoginUser = new EventEmitter <string> ();
+  public admin: string;
   constructor(
     private _service: TakeAwayService,
     private _route: Router,
   ) { }
 
   ngOnInit() {
+    // inicializacion de variables
     this.usuario = false;
     this.nameUsuario = ' ';
+    this.admin = 'admin';
     this._service.getUser()
       .subscribe(
         result => {
@@ -42,10 +44,12 @@ export class LoginComponent implements OnInit {
     console.log(form);
     console.log('quien eres?');
     console.log(this.users);
-    if ( form.username === 'admin' && form.password === 'admin' ) {
+    if ( form.username === this.admin && form.password === this.admin ) {
       console.log('hello admin');
+      localStorage.setItem('admin', this.admin);
       this._route.navigate(['/backoffice']);
       Materialize.toast('Hola Administrador', 4000);
+      location.reload();
     } else {
       for ( var i in this.users ) {
         if (this.users.hasOwnProperty(i)) {

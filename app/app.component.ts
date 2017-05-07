@@ -4,10 +4,11 @@ import { Productos } from './_model/productos';
 import { Cliente } from './_model/cliente';
 import { LoginComponent} from './backoffice/login/login.component';
 import { TakeAwayService } from './_service/takeaway.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 declare var $: any;
+declare var Materialize: any;
 
 @Component({
   selector: 'app-root',
@@ -19,52 +20,58 @@ export class AppComponent implements OnInit {
   // Declaracion de variables
   public Login: string;
   public cliente: Cliente;
+  public admin: string;
    public totalPrecio: number;
    public hayCart: boolean;
    public hayLogin: boolean;
+  public hayAdmin: boolean; 
+
    public Producto: any;
+   public cart: [Productos];
    constructor(
       // declaracion de los parametros
       private _service: TakeAwayService,
-      private _route: ActivatedRoute,
-      private _router: Router
+      private _route: Router
    ) {}
    ngOnInit () {
+    // inicializamos las variables
     this.totalPrecio = 0;
     this.hayCart = false;
     this.hayLogin = false;
-    this.Producto = localStorage.getItem('JsonCart');
-    if (this.Producto) {this.hayCart = true; };
-    this.Login = localStorage.getItem('LoginUser');
-    if (this.Login) {
-      this.hayLogin = true;
-    };
+    this.hayAdmin = false;
     this.cliente = new Cliente('', '', '','', '', '', '');
-    // if ( this.hayLogin){
-    //   this.loginEdit();
-    // }
-    console.log(this.hayLogin, this.Login);
+    // descargamos de localStorage las variables que necesitamos
+    this.Login = localStorage.getItem('LoginUser');
+    this.admin = localStorage.getItem('admin');
+    this.Producto = localStorage.getItem('JsonCart');
+    // Si exite variables en el localStorage activamos a true el hayCart y hayLogin
+    if (this.Producto) {this.hayCart = true; };
+    if (this.Login) {this.hayLogin = true; };
+    if (this.admin) {this.hayAdmin = true; };
+    // funciones de Materialize
     $('.button-collapse').sideNav();
     $('.modal').modal();
     $(".dropdown-button").dropdown();
   } // fin de onInit
   paintCart() {
-    this.Producto = JSON.parse(this.Producto);
+    this.Producto = localStorage.getItem('JsonCart');
+    this.cart = JSON.parse(this.Producto);
     console.log(this.Producto);
-    for (let i in this.Producto) {
-      if (this.Producto.hasOwnProperty(i)) {
-      this.totalPrecio = this.totalPrecio + (this.Producto[i]['precio'] * this.Producto[i]['cantidad']);
+    for (let i in this.cart) {
+      if (this.cart.hasOwnProperty(i)) {
+      this.totalPrecio = this.totalPrecio + (this.cart[i]['precio'] * this.cart[i]['cantidad']);
       }
     }
     $('#Cart').modal('open');
   } // fin de paintCart
-  loginEdit() {
+  loginInfo() {
     console.log(this.Login);
     this._service.getCliente(this.Login)
       .subscribe(
         result => {
           if(result.status === 'success'){
             this.cliente = result.data;
+            console.log(this.cliente);
           } else {
             alert('Error petición Mysql');
           }
@@ -72,11 +79,21 @@ export class AppComponent implements OnInit {
         error => {
           alert('Error al obtener cliente');
       })
-     console.log(this.cliente);
      $('#loginEdit').modal('open');
   } // fin de loginEdit
-  desconectar(){
+  desconectar() {
     localStorage.clear();
     location.reload();
+  } // fin de desconectar
+  borrarCart() {
+    this.hayCart = false;
+    localStorage.removeItem('JsonCart');
+    location.reload();
+  }// fin de borrarCart
+  irAWeb() {
+    console.log(this.hayAdmin);
+    this.hayAdmin = false;
+    localStorage.removeItem('admin');
+     this._route.navigate(['/inicio']);
   }
-}
+}// fin del archivo
