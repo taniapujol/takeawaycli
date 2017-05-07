@@ -1,3 +1,56 @@
-<p>
-  register works!
-</p>
+<div class="container z-depth-5">
+  <h2 class="red white-text" style="padding-left:20px">Registro</h2>
+  <div class="container">
+    <form #FormLogin="ngForm" (ngSubmit)="onSubmit(FormLogin.value)" style="margin:20px auto">
+      <!--campo Nombre de usuario-->
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field">
+            <i class=" medium material-icons prefix">account_circle</i>
+            <input id="username" name="nombre" type="text" ngModel>
+            <label for="username">Nombre</label>
+          </div>
+        </div>
+        <!--campo Contraseña-->
+        <div class="col s6">
+          <div class="input-field">
+            <i class=" medium material-icons prefix">vpn_key</i>
+            <input id="password" name="password" type="password" class="validate" ngModel>
+            <label for="password" data-error="error" data-success="correcto">Contraseña</label>           
+          </div>
+        </div>
+      </div>
+      <!--campo email-->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="medium material-icons prefix">email</i>
+          <input id="email" type="email" name="email" class="validate" ngModel>
+          <label for="email" data-error="error" data-success="correcto">Email</label>
+        </div>
+      </div>
+      <!--campo direccion-->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="direccion" type="text" name="direccion" ngModel>
+          <label for="direccion">Direccion   <span class="grey-text" style="font-size:11px;">c/Av/psg/ Nombre de la calle, numero , piso/casa - puerta. POBLACION </span></label>
+        </div>
+      </div>
+      <!--campo Telefono-->
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="telf" type="text" name="telf" pattern="^[9|8|7|6]\d{8}$" title="Su telefono debe de empezar por 9 o 6" class="validate" ngModel>
+          <label for="telf" data-error="error" data-success="correcto">Telephone</label>
+        </div>
+        <!--campo Codigo Postal-->
+        <div class="col s6">
+          <div class="input-field">
+            <input id="cp" name="cp" type="text" ngModel>
+            <label for="cp">Codigo Postal</label>
+          </div>
+        </div>
+      </div>
+      <button style="margin: 20px;" class="btn waves-effect waves-light red" type="submit" name="action">Enviar</button>
+    </form>
+  </div>
+</div>

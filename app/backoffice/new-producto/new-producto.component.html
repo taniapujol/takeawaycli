@@ -1,0 +1,103 @@
+<!--Creando el formulario de categorias para nueva entrada-->
+<div class="container z-depth-5" *ngIf="tipo === 'cat'" style="height:500px; margin:20px auto;">
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <h2 class="center red white-text">Creando Categoria</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <form #formCat="ngForm" (ngSubmit)="onSubmit(formCat.value)">
+        <div class="container" style="margin:50px auto;">
+          <div class="row">
+            <!--creamos la entrada de datos del nombre de la categoria-->
+            <div class="input-field col l11 m11 s12">
+              <input id="nombre" type="text" name="nombre" required="" ngModel>
+              <label for="nombre">Nombre Categoria</label>
+            </div>
+          </div>
+          <!--creamos la entrada de datos de la descripcion de la categoria-->
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="textarea" class="materialize-textarea" name="descripcion" ngModel></textarea>
+              <label for="textarea">Decripcion de la categoria</label>
+            </div>
+          </div>
+          <button id="categoria" class="btn waves-effect waves-light red" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
+      </button>
+          <button style="margin-bottom: 20px" class="btn waves-effect waves-light red right" type="reset"> Crear otra Categoria        
+    </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--creando el formulario de platos para nueva entrada-->
+<div class="container z-depth-5" *ngIf="tipo === 'plat'" style="min-height:500px; margin:20px auto;">
+  <div class="row">
+    <div class="col s12">
+      <h2 class="flow-text red white-text center">Creando nuevo Plato</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <form #formPlato="ngForm" (ngSubmit)="onSubmit(formPlato.value)">
+        <div class="container">
+          <!--creamos el campo nombre del plato-->
+          <div class="row">
+            <div class="input-field col l12 m12 s12">
+              <input id="nombre" type="text" name="nombre" ngModel>
+              <label for="nombre">Plato</label>
+            </div>
+          </div>
+          <!--creamos el campo de descripcion del producto-->
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="textarea" class="materialize-textarea" name="descripcion" ngModel></textarea>
+              <label for="textarea">Decripcion de la categoria</label>
+            </div>
+          </div>
+          <!-- creamos el campo subida de imagen -->
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">wallpaper</i>
+              <input id="foto" ngModel name="foto" type="text" class="validate">
+              <label for="foto">Foto</label>
+            </div>
+          </div>
+          <!-- creamos el campo activar producto, precio y categoria-->
+          <div class="row">
+            <!--creamos el campo activar producto-->
+            <div class="switch col l4 m4 s12">
+              <label>
+                  Off
+                  <input ngModel type="checkbox" name="activado">
+                  <span class="lever"></span>
+                  On
+                </label>
+            </div>
+            <!--creamos el campo precio-->
+            <div class="input-field col l4 m4 s12">
+              <input ngModel id="precio" type="number" step="any" name="precio" required="">
+              <label for="precio">Precio</label>
+            </div>
+            <!--creamos el campo categoria-->
+            <div class="input-field col l4 m4 s12 lista">
+              <select ngModel class="browser-default" id="listado" name="categoria">
+                <option value="" disabled selected>Elige una categoria</option>
+                <option *ngFor="let cat of categorias" [value]="cat.nombre"> {{cat.nombre}} </option>
+              </select>
+            </div>
+          </div>
+          <button style="margin-bottom: 20px" class="btn waves-effect waves-light red" type="submit" name="action">Enviar<i class="material-icons right">send</i>
+          </button>
+          <button style="margin-bottom: 20px" class="btn waves-effect waves-light red right" type="reset"> Crear otro Plato        
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

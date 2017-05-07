@@ -1,0 +1,112 @@
+<section id="tablaProductos">
+  <div class="container z-depth-5">
+    <h1 class="red" style="padding:20px"><i class="material-icons large left">shopping_basket</i>Tu compra es:</h1>
+    <div style="padding:20px;">
+    <table >
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>nombre</th>
+          <th>Precio unitario</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Amanida de arros</td>
+          <td>$3.00</td>
+          <td>$3.00</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lluç al romani</td>
+          <td>$3.00</td>
+          <td>$6.00</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Coca-Cola</td>
+          <td>$1.50</td>
+          <td>$3.00</td>
+        </tr>
+        <tr>
+          <td colspan="4">Total = $12.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</section>
+<section id="formcheckout" class="container" style="width:95%; margin:20px auto;">
+  <form>
+    <div class="row">
+      <div class="col s6">
+        <h3 class="red-text">¿Donde lo quieres?</h3>
+        <div id="Domicilio" class="row">
+          <div class="col s12">
+            <img src="../assets/img/utils/entrega_domicilio.png">
+            <input name="domicilio" type="radio" id="domicilio" />
+            <label for="domicilio">Si quieres que te llevemos tu pedido a casa, esta es tu opción.</label>
+          </div>
+        </div>
+        <div id="Recoger" class="row">
+          <div class="col s12">
+            <i class="material-icons" style="font-size:182px">store</i>
+            <input name="recoger" type="radio" id="recoger" />
+            <label for="recoger">O si lo prefieres, puedes hacer tu pedido y pasar a recogerlo en la tienda que elijas</label>
+          </div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="row">
+          <div class="col s12">
+            <h3 class="red-text">¿En que direccion?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <!--Campo nombre-->
+          <div class="col s6">
+            <div class="input-field">
+              <i class=" medium material-icons prefix">account_circle</i>
+              <input id="username" name="nombre" type="text" ngModel>
+              <label for="username">Nombre</label>
+            </div>
+          </div>
+          <!--campo Telefono-->
+          <div class="input-field col s6">
+            <i class="material-icons prefix">phone</i>
+            <input id="telf" type="tel" name="telf" pattern="^[9|8|7|6]\d{8}$" title="Su telefono debe de empezar por 9 o 6" class="validate"
+              ngModel>
+            <label for="telf" data-error="error" data-success="correcto">Telephone</label>
+          </div>
+        </div>
+        <!--campo email-->
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="medium material-icons prefix">email</i>
+            <input id="email" type="email" name="email" class="validate" ngModel>
+            <label for="email" data-error="error" data-success="correcto">Email</label>
+          </div>
+        </div>
+        <!--campo direccion-->
+        <div class="row">
+          <div class="input-field col s9">
+            <input id="direccion" type="text" name="direccion" ngModel>
+            <label for="direccion">Direccion</label>
+          </div>
+          <!--campo Codigo Postal-->
+          <div class="col s3">
+            <div class="input-field">
+              <input id="cp" name="cp" type="text" ngModel>
+              <label for="cp">Codigo Postal</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="waves-effect waves-teal btn-flat red white-text" style="width:100%; font-size:2em">HACER PEDIDO</button>
+  </form>
+</section>
